@@ -1,0 +1,22 @@
+<nav class="navbar navbar-position bg-dark">
+
+    <div class="row col-sm-12 text-white padding-zero">
+        <div class="row col-sm-8">
+            <div class="col-sm-2">
+                <a class="navbar-brand navbar-color" ui-sref="app.home">School</a>
+            </div>
+            <div class="nav-item">
+                <a class="nav-link navbar-color active" ui-sref="app.home">Home <span class="sr-only">(current)</span></a>
+            </div>
+            <div class="nav-item">
+                    <a class="nav-link navbar-color" ui-sref="app.profile">Profile <span class="sr-only">(current)</span></a>
+                </div>
+        </div>
+        <div class="col-sm-4 text-right col-center padding-zero">
+            <div>
+                <span title="logout" ng-click="vm.logout()"><i class="fa fa-power-off"></i></span>&nbsp;&nbsp;
+                <span><i class="fa fa-user"></i> Hi, {{vm.user.username}}</span>
+            </div>
+        </div>
+    </div>
+</nav>

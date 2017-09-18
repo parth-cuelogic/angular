@@ -1,0 +1,46 @@
+<div class="container-fluid">
+    <div class="panel panel-default" ng-controller="registerController as vm">
+        <div class="panel-body">
+            <div class="row row-margin-top">
+                <div class="col-sm-6 marginAuto form-border">
+                    <div class="row text-center text-white bg-danger">
+                        <div class="col">
+                            <div class="p-3 mb-2 bg-danger text-white header-reg-form">Registration Form</div>
+                        </div>
+                    </div>
+                    <div ng-form="registration" class="p-3 mb-2">
+                        <div class="form-group">
+                            <label for="email">User Name:</label>
+                            <input type="text" class="form-control" ng-model="vm.registration.username" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="email">Email Address:</label>
+                            <input type="email" class="form-control" id="email" ng-model="vm.registration.email" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="pwd">Password:</label>
+                            <input type="password" class="form-control" ng-model="vm.registration.password" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="pwd">Confirm Password:</label>
+                            <input type="password" class="form-control" id="c_password" name="c_password" ng-blur="vm.checkCpassword()" ng-model="vm.registration.c_password"
+                                required>
+                        </div>
+                        <div class="form-group">
+                            <label for="pwd">Role</label>
+                            <select class="form-control" required ng-model="vm.registration.role">
+                                                <option value=''>select</option>
+                                                <option value="student">Student</option>
+                                                <option value="teacher">Teacher</option>
+                            </select>
+                        </div>
+                        <!-- <div class="checkbox">
+                                    <label><input type="checkbox"> Remember me</label>
+                                </div> -->
+                        <button class="btn btn-info" ng-disabled="registration.$pristine || registration.$invalid" ng-click="vm.register()">Submit</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

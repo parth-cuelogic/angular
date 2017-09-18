@@ -1,0 +1,33 @@
+<div class="container-fluid">
+    <div class="panel panel-default" ng-controller="loginController as vm">
+        <div class="panel-body">
+            <div class="row row-margin-top">
+                <div class="col-sm-6 marginAuto login-form-border">
+                    <div class="row text-center text-white bg-info">
+                        <div class="col">
+                            <div class="p-3 mb-2 header-reg-form">Login Form</div>
+                        </div>
+                    </div>
+                    <div ng-form="registration" class="p-3 mb-2" ng-submit="vm.login()">
+                        <div class="form-group">
+                            <label for="email">User Name:</label>
+                            <input type="text" class="form-control" ng-model="vm.loginCredentials.username" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="password">Password:</label>
+                            <input type="password" class="form-control" id="password" ng-model="vm.loginCredentials.password" required>
+                        </div>
+                        <!-- <div class="checkbox">
+                                <label><input type="checkbox"> Remember me</label>
+                            </div> -->
+                        <button type="button" class="btn btn-info form-group" ng-disabled="registration.$pristine || registration.$invalid" ng-click="vm.login()">Submit</button>
+                        <div class="form-group">
+                            <label for="password">No account? <a ui-sref="register"> Create one!</a></label>
+                        </div>
+
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

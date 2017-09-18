@@ -1,0 +1,30 @@
+<div class="panel panel-default" ng-controller="homeController as vm">
+    <div class="panel-body row-margin-top">
+        <h2>Welcome {{vm.logedInUser.role | capitalize}}</h2>
+        <div class="row">
+            <div class="col-sm-8 marginAuto">
+                <div class="row text-right margin-bottom-10">
+                    <div class="col">
+                        <button class="btn btn-sm btn-primary" ng-click="vm.toggleAddUserModal()"><i class="fa fa-plus"></i> Add New</button>
+                    </div>
+                </div>
+                <table class="table table-striped">
+                    <tr>
+                        <th>Id</th>
+                        <th>UserName</th>
+                        <th>Email</th>
+                        <th ng-if="vm.logedInUser.role=='teacher'">Actions</th>
+                    </tr>
+                    <tr ng-repeat="user in vm.assignedUsers">
+                        <td>{{user.id}}</td>
+                        <td>{{user.username}}</td>
+                        <td>{{user.email}}</td>
+                        <td ng-if="vm.logedInUser.role=='teacher'">
+                            <button type="button" class="btn btn-outline-danger"><i class="fa fa-trash"></i></button>
+                        </td>
+                    </tr>
+                </table>
+            </div>
+        </div>
+    </div>
+</div>
