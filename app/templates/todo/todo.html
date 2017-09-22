@@ -1,11 +1,13 @@
 <div class="panel panel-default" ng-controller="todoController as vm">
     <div class="panel-body">
         <div class="col-sm-6 col-md-offset-2">
-            <div>
-                <h2>Todo</h2>
+            <div class="row text-center">
+                <div class="col">
+                <h3>{{vm.btn.name}}</h3>
+                </div>
             </div>
             <div ng-form="todo" class="p-3 mb-2">
-                <input type="file" id='fileUpload' file-Input style="visibility:hidden" ng-model="vm.file" ng-change="vm.fileUpload()">
+                <file-upload file="file" fileUpload="fileUpload()" />
                 <div class="form-group">
 
                     <img height="150" onclick="document.getElementById('fileUpload').click()" class="img-div" width="150" ng-src="{{vm.todo.pic?vm.todo.pic:'assets/img/noimg.png'}}">
@@ -25,12 +27,9 @@
                 <div class="form-group">
                     <label for="pwd">Date: </label>
                     <p class="input-group">
-                        <input type="text" class="form-control" ng-model="vm.todo.date" uib-datepicker-popup="{{format}}" ng-model="dt" is-open="vm.popup.popup1"
-                            datepicker-options="dateOptions" ng-required="true" close-text="Close" alt-input-formats="altInputFormats"
-                        />
-                        <span class="input-group-btn">
-                              <button type="button" class="btn btn-default" ng-click="vm.open('popup1')"><i class="fa fa-calendar"></i></button>
-                            </span>
+                        <datepicker>
+                            <input class="form-control" style="width:100%"  ng-model="vm.todo.date" type="text" />
+                        </datepicker>
                     </p>
                 </div>
                 <div class="form-group row">
@@ -61,12 +60,9 @@
                 <div class="form-group" ng-if="vm.todo.isReminder=='on'">
                     <label for="pwd">Reminder Date: </label>
                     <p class="input-group">
-                        <input type="text" class="form-control" ng-model="vm.todo.reminderDate" uib-datepicker-popup="{{format}}" ng-model="dt" is-open="vm.popup.popup2"
-                            datepicker-options="dateOptions" ng-required="true" close-text="Close" alt-input-formats="altInputFormats"
-                        />
-                        <span class="input-group-btn">
-                                  <button type="button" class="btn btn-default" ng-click="vm.open('popup2')"><i class="fa fa-calendar"></i></button>
-                        </span>
+                        <datepicker>
+                            <input class="form-control" style="width:100%" ng-model="vm.todo.reminderDate" type="text" />
+                        </datepicker>
                     </p>
                 </div>
                 <div class="form-group row">

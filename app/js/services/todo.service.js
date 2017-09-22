@@ -10,7 +10,7 @@ var Todo = (function () {
         this.reminderDate = todo.reminderDate;
         this.isPublic = todo.isPublic;
         this.pic = ''
-        this.isCompleted = false;
+        this.isCompleted = this.isCompleted;
     }
 })();
 
@@ -24,11 +24,27 @@ app.service('TodoService', ['DataService', function (DataService) {
     }
 
     this.getUserTodos = function (todoIds) {
-        // return Todos.filter((todo) => {
-        //     if (todoIds.includes(todo.id)) return todo;
-        //     if (todo.isPublic) return todo;
-        // })
+        return Todos.filter((todo) => {
+            if (todoIds.includes(todo.id) || todo.isPublic) return todo;
+        })
         return Todos
+    }
+
+    this.getUserTodoByStartEndDate = function (todoIds, startDate, endDate) {
+        if (!startDate) {
+            startDate = new Date();
+        }
+        if (!endDate) {
+            endDate = new Date();
+        }
+        return Todos.filter((todo) => {
+            if (todoIds.includes(todo.id) || todo.isPublic) {
+                if (new Date(todo.date) >= new Date(startDate) && new Date(todo.date) <= new Date(endDate)) {
+                    return todo;
+                }
+            }
+
+        })
     }
 
     this.updateTodo = function (todo) {
@@ -57,7 +73,8 @@ app.service('TodoService', ['DataService', function (DataService) {
         categories: ['work'],
         description: '',
         isPublic: true,
-        isReminder: false
+        isReminder: false,
+        date: new Date().setDate(1)
     }));
     Todos.push(new Todo({
         name: 'zxcds',
@@ -75,10 +92,10 @@ app.service('TodoService', ['DataService', function (DataService) {
     }));
     Todos.push(new Todo({
         name: 'bopdfsdf',
-        categories: ['work'],
+        categories: ['work', 'other'],
         description: '',
         isPublic: false,
-        isReminder: false
+        isReminder: false,
     }));
 
 }])

@@ -5,9 +5,8 @@
                 <h2>Profile</h2>
             </div>
             <div ng-form="profile" class="p-3 mb-2">
-                <input type="file" id='fileUpload' file-Input style="visibility:hidden" ng-model="vm.file" ng-change="vm.fileUpload()">
+                <file-upload file="file" fileUpload="fileUpload()" />
                 <div class="form-group">
-
                     <img height="150" onclick="document.getElementById('fileUpload').click()" class="img-div" width="150" SRC={{vm.user.image}}>
                     <span class="img-div fa fa-pencil" style="position: relative;
                     left: -4.9vw;

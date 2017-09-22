@@ -4,6 +4,7 @@ app.directive('listTodo', function () {
         template: `<tr>
                     <td>{{todo.id}}</td>
                     <td>{{todo.name}}</td>
+                    <td>{{todo.date | date:'dd/MM/yyyy'}}</td>
                     <td>{{todo.description}}</td>
                     <td>{{todo.categories.join(', ')}}</td>
                     <td class="text-center">
@@ -13,11 +14,11 @@ app.directive('listTodo', function () {
                     <td>{{todo.isCompleted?'Yes':'No'}}</td>
                     <td>
                         <button type="button" class="btn btn-outline-success" ng-click="vm.editTodo(todo.id)"><i class="fa fa-pencil"></i></button>
-                        <button type="button" ng-attr-title="{{todo.isPublic?'only owner can delete public todos':null}}" class="btn btn-outline-danger" ng-click="vm.openModal(todo.id)"><i class="fa fa-trash"></i></button>
+                        <button type="button" delete-permission ng-attr-title="{{todo.isPublic?'only owner can delete public todos':null}}" class="btn btn-outline-danger" ng-click="vm.openModal(todo.id)"><i class="fa fa-trash"></i></button>
                     </td>
                 </tr>`,
         replace: true
     }
 })
 
-//delete-permission 
+// 

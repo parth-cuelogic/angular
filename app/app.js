@@ -14,11 +14,11 @@ app.controller('mainController',
                 $state.go('login');
             }
 
-            $rootScope.$on('$stateChangeStart',
-                function (event, toState, toParams, fromState, fromParams) {
-                    if (toState.name !== 'login' && !AuthService.getUser()) {
-                        event.preventDefault();
-                        $state.go('login');
-                    }
-                });
+            // $rootScope.$on('$stateChangeStart',
+            //     function (event, toState, toParams, fromState, fromParams) {
+            //         if (toState.name !== 'login' && toState.name !== 'register' && !AuthService.getUser()) {
+            //             event.preventDefault();
+            //             $state.go('login');
+            //         }
+            //     });
         }]);

@@ -7,6 +7,8 @@ app.controller('todoController',
                 name: 'Add Todo',
                 icon: 'fa fa-plus'
             }
+            $scope.file = '';
+
             let todoId = $stateParams.id ? $stateParams.id : 0;
             if (todoId > 0) {
                 vm.todo = TodoService.getTodo(todoId);
@@ -71,8 +73,8 @@ app.controller('todoController',
                 $state.go('app.home');
             }
 
-            vm.fileUpload = function () {
-                base64.encode(vm.file[0]).then((imgBase64) => {
+            $scope.fileUpload = function (file) {
+                base64.encode(file[0]).then((imgBase64) => {
                     vm.todo.pic = imgBase64;
                     $scope.todo.$setDirty();
                 })

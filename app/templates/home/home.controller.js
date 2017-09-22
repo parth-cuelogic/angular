@@ -10,6 +10,8 @@ app.controller('homeController',
                 value: '',
                 key: 'name'
             }
+            vm.startDate = '';
+            vm.endDate = '';
             $scope.order = [];
             $scope.order['key'] = 'name';
             $scope.order['name'] = false;
@@ -19,7 +21,7 @@ app.controller('homeController',
 
 
             if (vm.logedInUser)
-                vm.todos = TodoService.getUserTodos(vm.logedInUser.todo);
+                vm.todos = TodoService.getUserTodos(vm.logedInUser.todo, vm.startDate, vm.endDate);
 
             vm.addNewTodo = function (parentSelector) {
                 $state.go('app.todo', { id: '' });
@@ -39,6 +41,7 @@ app.controller('homeController',
                 vm.uibmodal.dismiss();
             }
 
+
             vm.authService = AuthService;
             $scope.$watch('vm.authService.getUser()', function (newValue, oldValue) {
                 if (newValue && newValue != oldValue) {
@@ -46,6 +49,10 @@ app.controller('homeController',
                     vm.logedInUser = newValue;
                 }
             })
+
+            vm.getTodosBYStartEndDate = function () {
+                vm.todos = TodoService.getUserTodoByStartEndDate(vm.logedInUser.todo, vm.startDate, vm.endDate);
+            }
 
             vm.openModal = function (id) {
                 vm.deleteId = id;
@@ -63,6 +70,13 @@ app.controller('homeController',
                     $scope.order[keyVal] = !$scope.order[keyVal]
                 }
                 $scope.order['key'] = keyVal;
+            };
+
+            vm.clearFilters = function () {
+                vm.filter = {
+                    value: '',
+                    key: 'name'
+                }
             }
 
 

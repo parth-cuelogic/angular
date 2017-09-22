@@ -38,6 +38,12 @@
     margin-bottom: 10px
 }
 
+div._720kb-datepicker-calendar._720kb-datepicker-open{
+    width: 50px;
+    position: absolute;
+    top: 36px;
+}
+
 input.ng-dirty.ng-invalid {
     border:1px solid red;
 }

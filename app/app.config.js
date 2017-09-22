@@ -4,7 +4,8 @@ var app = angular.module('angulardemo', [
     'ui.router',
     'toaster',
     'ngAnimate',
-    'ui.router.state.events']);
+    'ui.router.state.events',
+    '720kb.datepicker']);
 
 
 app.config(['$locationProvider', '$routeProvider', '$controllerProvider', '$stateProvider', '$urlRouterProvider', function ($locationProvider, $routeProvider, $controllerProvider, $stateProvider, $urlRouterProvider) {

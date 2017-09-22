@@ -1,5 +1,6 @@
 <div class="container-fluid">
     <div class="panel panel-default" ng-controller="registerController as vm">
+        <toaster-container></toaster-container>
         <div class="panel-body">
             <div class="row row-margin-top">
                 <div class="col-sm-6 marginAuto form-border">
@@ -10,38 +11,39 @@
                     </div>
                     <div ng-form="registration" class="p-3 mb-2">
                         <div class="form-group">
-                            <label for="email">User Name:</label>
-                            <input type="text" class="form-control" ng-model="vm.registration.userName" required>
+                            <label for="email">User Name:<span ng-if="registration.username.$invalid && registration.username.$dirty" style="color:red">Username cannot be blank</span></label>
+                            <input type="text" class="form-control" name="username" ng-model="vm.registration.userName" required>
                         </div>
                         <div class="form-group">
-                            <label for="email">Email Address:</label>
-                            <input type="email" class="form-control" id="email" ng-model="vm.registration.email" required>
+                            <label for="email">Email Address:<span ng-if="registration.email.$invalid && registration.email.$dirty" style="color:red">Enter proper email address</span></label>
+                            <input type="email" class="form-control" id="email" ng-model="vm.registration.email" name="email" required>
                         </div>
                         <div class="form-group">
-                            <label for="pwd">First Name:</label>
-                            <input type="text" class="form-control" ng-model="vm.registration.firstName" required>
+                            <label for="pwd">First Name:<span ng-if="registration.firstname.$invalid && registration.firstname.$dirty" style="color:red">Username cannot be blank</span></label>
+                            <input type="text" class="form-control" ng-model="vm.registration.firstName" name="firstname" required>
                         </div>
                         <div class="form-group">
-                            <label for="pwd">Last Name:</label>
-                            <input type="text" class="form-control" ng-model="vm.registration.lastName" required>
+                            <label for="pwd">Last Name:<span ng-if="registration.lastname.$invalid && registration.lastname.$dirty" style="color:red">Lastname cannot be blank</span></label>
+                            <input type="text" class="form-control" ng-model="vm.registration.lastName" name="lastname" required>
                         </div>
                         <div class="form-group">
                             <label for="pwd">Address:</label>
-                            <textarea rows="4" class="form-control" ng-model="vm.registration.address" />
+                            <textarea rows="4" class="form-control" ng-model="vm.registration.address" name="address" />
                         </div>
                         <div class="form-group">
-                            <label for="pwd">Password:</label>
-                            <input type="password" class="form-control" ng-model="vm.registration.password" required>
+                            <label for="pwd">Password: <span ng-if="registration.password.$invalid && registration.password.$dirty" style="color:red">Password cannot be blank</span></label>
+                            <input type="password" class="form-control" ng-model="vm.registration.password" name="password" required>
                         </div>
                         <div class="form-group">
-                            <label for="pwd">Confirm Password:</label>
+                            <label for="pwd">Confirm Password: <span ng-if="registration.c_password.$invalid && registration.c_password.$dirty" style="color:red">Password mismatch</span></label>
                             <input type="password" class="form-control" id="c_password" name="c_password" ng-blur="vm.checkCpassword()" ng-model="vm.registration.c_password"
                                 required>
                         </div>
                         <div class="form-group">
-                            <label>Gender:</label> Male <input type="radio" checked="vm.registration.gender=='M'" name="gender"
+                            <label>Gender:</label> Male <input type="radio" checked="vm.registration.gender=='M'" name="gender" required
                                 ng-model="vm.registration.gender" value='M' /> Female <input type="radio" checked="vm.registration.gender=='F'"
                                 name="gender" ng-model="vm.registration.gender" value='F' />
+                                <span ng-if="registration.gender.$invalid && registration.gender.$dirty" style="color:red">Please select gender</span>
                         </div>
                         <div class="form-group">
                             <button class="btn btn-info" ng-disabled="registration.$pristine || registration.$invalid" ng-click="vm.register()">Register</button>
