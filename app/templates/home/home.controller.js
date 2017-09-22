@@ -77,6 +77,7 @@ app.controller('homeController',
                     value: '',
                     key: 'name'
                 }
+                vm.todos = TodoService.getUserTodos(newValue.todo);
             }
 
 

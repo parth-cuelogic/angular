@@ -1,34 +1,33 @@
 <div class="panel panel-default" ng-controller="todoController as vm">
     <div class="panel-body">
         <div class="col-sm-6 col-md-offset-2">
-            <div class="row text-center">
-                <div class="col">
-                <h3>{{vm.btn.name}}</h3>
-                </div>
-            </div>
             <div ng-form="todo" class="p-3 mb-2">
                 <file-upload file="file" fileUpload="fileUpload()" />
-                <div class="form-group">
-
-                    <img height="150" onclick="document.getElementById('fileUpload').click()" class="img-div" width="150" ng-src="{{vm.todo.pic?vm.todo.pic:'assets/img/noimg.png'}}">
-                    <span class="img-div fa fa-pencil" style="position: relative;
-                        left: -4.9vw;
-                        font-size:1.5em;"></span>
-                    </img>
+                <div class="row text-center">
+                    <div class="col">
+                        <h3>{{vm.btn.name}}</h3>
+                    </div>
+                </div>
+                <div class="form-group text-center img-div" onclick="document.getElementById('fileUpload').click()">
+                    <div class="col">
+                        <img height="150" width="150" ng-src="{{vm.todo.pic?vm.todo.pic:'assets/img/noimg.png'}}">
+                        </img>
+                        <span class="img-div fa fa-pencil pencil-pos"></span>
+                    </div>
                 </div>
                 <div class="form-group">
-                    <label for="pwd">Name: </label>
-                    <input type="text" class="form-control" ng-model="vm.todo.name" required>
+                    <label for="pwd">Name: <span style="color:red" ng-if="todo.name.$invalid && todo.name.$dirty">Name cannot be blank</span></label>
+                    <input type="text" class="form-control" name="name" ng-model="vm.todo.name" required>
                 </div>
                 <div class="form-group">
-                    <label for="pwd">Description: </label>
+                    <label>Description:</label>
                     <textarea class="form-control" ng-model="vm.todo.description" />
                 </div>
                 <div class="form-group">
-                    <label for="pwd">Date: </label>
+                    <label for="pwd">Date: <span style="color:red" ng-if="todo.date.$invalid && todo.date.$dirty">Date cannot be blank</span></label>
                     <p class="input-group">
                         <datepicker>
-                            <input class="form-control" style="width:100%"  ng-model="vm.todo.date" type="text" />
+                            <input class="form-control" no-input required style="width:100%" ng-model="vm.todo.date" type="text" name="date" />
                         </datepicker>
                     </p>
                 </div>
@@ -58,10 +57,11 @@
                     </div>
                 </div>
                 <div class="form-group" ng-if="vm.todo.isReminder=='on'">
-                    <label for="pwd">Reminder Date: </label>
+                    <label for="pwd">Reminder Date:<span style="color:red" ng-if="todo.reqdate.$invalid && todo.reqdate.$dirty">Reminder date cannot be blank</span> </label>
                     <p class="input-group">
                         <datepicker>
-                            <input class="form-control" style="width:100%" ng-model="vm.todo.reminderDate" type="text" />
+                            <input class="form-control" no-input style="width:100%" required name="reqdate" ng-model="vm.todo.reminderDate" type="text"
+                            />
                         </datepicker>
                     </p>
                 </div>

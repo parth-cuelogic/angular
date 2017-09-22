@@ -1,27 +1,27 @@
 <div class="panel panel-default" ng-controller="profileController as vm">
     <div class="panel-body">
         <div class="col-sm-6 col-md-offset-2">
-            <div>
-                <h2>Profile</h2>
-            </div>
             <div ng-form="profile" class="p-3 mb-2">
                 <file-upload file="file" fileUpload="fileUpload()" />
-                <div class="form-group">
-                    <img height="150" onclick="document.getElementById('fileUpload').click()" class="img-div" width="150" SRC={{vm.user.image}}>
-                    <span class="img-div fa fa-pencil" style="position: relative;
-                    left: -4.9vw;
-                    font-size:1.5em;"></span>
+                <div class="row text-center">
+                    <div class="col">
+                        <h3>Profile</h3>
+                    </div>
+                </div>
+                <div class="form-group img-div"  onclick="document.getElementById('fileUpload').click()">
+                    <img height="150" width="150" SRC={{vm.user.image}}>
                     </img>
+                    <span class="img-div fa fa-pencil pencil-pos-2"></span>
                     <label for="pwd">Welcome {{vm.user.userName}}</label>
                 </div>
 
                 <div class="form-group">
-                    <label for="pwd">First Name:</label>
-                    <input type="text" class="form-control" ng-model="vm.user.firstName" required>
+                    <label for="pwd">First Name:<span style="color:red" ng-if="profile.firstname.$invalid && profile.firstname.$dirty">Firstname cannot be blank</span></label>
+                    <input type="text" name="firstname" class="form-control" ng-model="vm.user.firstName" required>
                 </div>
                 <div class="form-group">
-                    <label for="pwd">Last Name:</label>
-                    <input type="text" class="form-control" ng-model="vm.user.lastName" required>
+                    <label for="pwd">Last Name:<span style="color:red" ng-if="profile.lastname.$invalid && profile.lastname.$dirty">Lastname cannot be blank</span></label>
+                    <input type="text" class="form-control" name="lastname" ng-model="vm.user.lastName" required>
                 </div>
                 <div class="form-group">
                     <label for="pwd">Address:</label>

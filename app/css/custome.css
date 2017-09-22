@@ -48,9 +48,33 @@ input.ng-dirty.ng-invalid {
     border:1px solid red;
 }
 
-.img-div:hover{
+.img-div:hover img{
     opacity: 0.5;
 }
+.img-div:hover span{
+    display: block;
+}
+
+.img-div span{
+    display: none;
+}
+.pencil-pos{
+    position: absolute !important;
+    left: 0 !important;
+    font-size: 1.5em !important;
+    top: 62px !important;
+    right: 0 !important;
+    bottom: 0 !important;
+}
+.pencil-pos-2{
+    position: absolute;
+    left: 84px !important;
+    font-size: 1.5em !important;
+    top: 129px !important;
+    right: 0px !important;
+    bottom: 0 !important;
+}
+
 div.modal.fade {
     background-color: rgba(0,0,0,.5);
     opacity: 1; 
