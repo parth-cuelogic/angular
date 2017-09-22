@@ -4,7 +4,9 @@
   "description": "angular-demo",
   "main": "index.js",
   "dependencies": {
+    "angular-animate": "^1.6.6",
     "angular-ui-router": "^1.0.0-rc.1",
+    "angularjs-toaster": "^2.2.0",
     "bootstrap": "^3.3.7"
   },
   "devDependencies": {},

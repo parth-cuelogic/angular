@@ -41,3 +41,16 @@
 input.ng-dirty.ng-invalid {
     border:1px solid red;
 }
+
+.img-div:hover{
+    opacity: 0.5;
+}
+div.modal.fade {
+    background-color: rgba(0,0,0,.5);
+    opacity: 1; 
+    padding-top: 15%;
+}
+
+.cursor-pointer{
+    cursor: pointer;
+}

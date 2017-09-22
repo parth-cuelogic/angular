@@ -1,30 +1,67 @@
-<div class="panel panel-default" ng-controller="homeController as vm">
+<div class="panel panel-default" ng-controller="homeController as vm" class="modal-demo">
     <div class="panel-body row-margin-top">
-        <h2>Welcome {{vm.logedInUser.role | capitalize}}</h2>
+        <h2>Welcome {{vm.logedInUser.userName | capitalize}}</h2>
         <div class="row">
             <div class="col-sm-8 marginAuto">
                 <div class="row text-right margin-bottom-10">
-                    <div class="col">
-                        <button class="btn btn-sm btn-primary" ng-click="vm.toggleAddUserModal()"><i class="fa fa-plus"></i> Add New</button>
+                    <div class='col-sm-4'>
+                    </div>
+                    <div class="col-sm-6">
+                        <div class="input-group">
+                            <input type="text" class="form-control" placeholder="filter" ng-model="vm.filter.value" aria-describedby="btnGroupAddon">
+                            <span class="input-group-addon" id="btnGroupAddon">
+                                            <select ng-model='vm.filter.key'>
+                                                    <option value=''>filter</option>
+                                                    <option value='name'>Name</option>
+                                                    <option value='categories'>Categories</option>
+                                                    <option value='isPublic'>IsPublic</option>
+                                                    <option value='isCompleted'>IsCompleted</option>
+                                                </select>
+                            </span>
+                        </div>
+                    </div>
+                    <div class="col-sm-2">
+                        <button class="btn btn-primary" ng-click="vm.addNewTodo()"><i class="fa fa-plus"></i> Add todo</button>
                     </div>
                 </div>
-                <table class="table table-striped">
+                <table ng-if="vm.todos.length>0" class="table table-striped">
                     <tr>
                         <th>Id</th>
-                        <th>UserName</th>
-                        <th>Email</th>
-                        <th ng-if="vm.logedInUser.role=='teacher'">Actions</th>
+                        <th class="cursor-pointer" ng-click="vm.sort('name')">Name
+                            <caret order="order" keyname="name" />
+                        </th>
+                        <th>Description</th>
+                        <th>Category</th>
+                        <th>Picture</th>
+                        <th class="cursor-pointer" ng-click="vm.sort('isPublic')">IsPublic
+                            <caret order="order" keyname="isPublic" />
+                        </th>
+                        <th class="cursor-pointer" ng-click="vm.sort('isCompleted')">IsCompleted
+                            <caret order="order" keyname="isCompleted" />
+                        </th>
+                        <th>Actions</th>
                     </tr>
-                    <tr ng-repeat="user in vm.assignedUsers">
-                        <td>{{user.id}}</td>
-                        <td>{{user.username}}</td>
-                        <td>{{user.email}}</td>
-                        <td ng-if="vm.logedInUser.role=='teacher'">
-                            <button type="button" class="btn btn-outline-danger"><i class="fa fa-trash"></i></button>
-                        </td>
+                    <tr ng-repeat="todo in vm.todos | todofilter:vm.filter.key:vm.filter.value | orderBy:order['key']:order[order.key]" list-todo>
+                        <!-- <td>{{todo.id}}</td>
+                        <td>{{todo.name}}</td>
+                        <td>{{todo.description}}</td>
+                        <td>{{todo.categories.join(', ')}}</td>
+                        <td>{{todo.isPublic?'Yes':'No'}}</td>
+                        <td>{{todo.isCompleted?'Yes':'No'}}</td>
+                        <td>
+                            <button type="button" class="btn btn-outline-success" ng-click="vm.editTodo(todo.id)"><i class="fa fa-pencil"></i></button>
+                            <button type="button" class="btn btn-outline-danger" ng-click="vm.deleteTodo(todo.id)"><i class="fa fa-trash"></i></button>
+                        </td> -->
                     </tr>
                 </table>
+                <div ng-if="vm.todos.length==0" class='row text-center'>
+                    <div class="col">
+                        <p>No Records Found</p>
+                    </div>
+                </div>
             </div>
         </div>
+    </div>
+    <div class="modal-parent">
     </div>
 </div>

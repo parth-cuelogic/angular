@@ -1,0 +1,102 @@
+<div class="panel panel-default" ng-controller="todoController as vm">
+    <div class="panel-body">
+        <div class="col-sm-6 col-md-offset-2">
+            <div>
+                <h2>Todo</h2>
+            </div>
+            <div ng-form="todo" class="p-3 mb-2">
+                <input type="file" id='fileUpload' file-Input style="visibility:hidden" ng-model="vm.file" ng-change="vm.fileUpload()">
+                <div class="form-group">
+
+                    <img height="150" onclick="document.getElementById('fileUpload').click()" class="img-div" width="150" ng-src="{{vm.todo.pic?vm.todo.pic:'assets/img/noimg.png'}}">
+                    <span class="img-div fa fa-pencil" style="position: relative;
+                        left: -4.9vw;
+                        font-size:1.5em;"></span>
+                    </img>
+                </div>
+                <div class="form-group">
+                    <label for="pwd">Name: </label>
+                    <input type="text" class="form-control" ng-model="vm.todo.name" required>
+                </div>
+                <div class="form-group">
+                    <label for="pwd">Description: </label>
+                    <textarea class="form-control" ng-model="vm.todo.description" />
+                </div>
+                <div class="form-group">
+                    <label for="pwd">Date: </label>
+                    <p class="input-group">
+                        <input type="text" class="form-control" ng-model="vm.todo.date" uib-datepicker-popup="{{format}}" ng-model="dt" is-open="vm.popup.popup1"
+                            datepicker-options="dateOptions" ng-required="true" close-text="Close" alt-input-formats="altInputFormats"
+                        />
+                        <span class="input-group-btn">
+                              <button type="button" class="btn btn-default" ng-click="vm.open('popup1')"><i class="fa fa-calendar"></i></button>
+                            </span>
+                    </p>
+                </div>
+                <div class="form-group row">
+                    <div class="col-sm-4">
+                        <label for="pwd">Categories: </label>
+                    </div>
+                    <div class="col-sm-8">
+                        <div class="btn-group btn-group-sm" role="group" aria-label="Basic example">
+                            <button type="button" ng-class="{'btn btn-primary':vm.addClass('work',vm.todo.categories,'categories')}" ng-click="vm.handleIsReminder('categories','work')">Work</button>
+                            <button type="button" ng-class="{'btn btn-primary':vm.addClass('personal',vm.todo.categories,'categories')}" ng-click="vm.handleIsReminder('categories','personal')">Personal</button>
+                            <button type="button" ng-class="{'btn btn-primary':vm.addClass('home',vm.todo.categories,'categories')}" ng-click="vm.handleIsReminder('categories','home')">Home</button>
+                            <button type="button" ng-class="{'btn btn-primary':vm.addClass('other',vm.todo.categories,'categories')}" ng-click="vm.handleIsReminder('categories','other')">Other</button>
+                        </div>
+                    </div>
+                </div>
+                <div class="form-group row">
+                    <div class="col-sm-4">
+                        <label>isReminder: </label>
+                    </div>
+                    <div class="col-sm-8">
+                        <div class="btn-group btn-group-sm" role="group" aria-label="Basic example">
+                            <button type="button" ng-model='vm.todo.isReminder' ng-class="{'btn btn-success':vm.addClass('on',vm.todo.isReminder)}" ng-click="vm.handleIsReminder('isReminder','on')">On</button>
+                            <button type="button" ng-model='vm.todo.isReminder' ng-class="{'btn btn-success':vm.addClass('off',vm.todo.isReminder)}"
+                                ng-click="vm.handleIsReminder('isReminder','off')">Off</button>
+                        </div>
+                    </div>
+                </div>
+                <div class="form-group" ng-if="vm.todo.isReminder=='on'">
+                    <label for="pwd">Reminder Date: </label>
+                    <p class="input-group">
+                        <input type="text" class="form-control" ng-model="vm.todo.reminderDate" uib-datepicker-popup="{{format}}" ng-model="dt" is-open="vm.popup.popup2"
+                            datepicker-options="dateOptions" ng-required="true" close-text="Close" alt-input-formats="altInputFormats"
+                        />
+                        <span class="input-group-btn">
+                                  <button type="button" class="btn btn-default" ng-click="vm.open('popup2')"><i class="fa fa-calendar"></i></button>
+                        </span>
+                    </p>
+                </div>
+                <div class="form-group row">
+                    <div class="col-sm-4">
+                        <label>isPublic: </label>
+                    </div>
+                    <div class="col-sm-8">
+                        <div class="btn-group btn-group-sm" role="group" aria-label="Basic example">
+                            <button type="button" ng-class="{'btn btn-success':vm.addClass(true,vm.todo.isPublic)}" ng-click="vm.handleIsReminder('isPublic',true)">True</button>
+                            <button type="button" ng-class="{'btn btn-success':vm.addClass(false,vm.todo.isPublic)}" ng-click="vm.handleIsReminder('isPublic',false)">False</button>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="form-group row">
+                    <div class="col-sm-4">
+                        <label>isCompleted: </label>
+                    </div>
+                    <div class="col-sm-8">
+                        <div class="btn-group btn-group-sm" role="group" aria-label="Basic example">
+                            <button type="button" ng-class="{'btn btn-success':vm.addClass(true,vm.todo.isCompleted)}" ng-click="vm.handleIsReminder('isCompleted',true)">True</button>
+                            <button type="button" ng-class="{'btn btn-success':vm.addClass(false,vm.todo.isCompleted)}" ng-click="vm.handleIsReminder('isCompleted',false)">False</button>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <button class="btn btn-info" ng-disabled="todo.$pristine || todo.$invalid" ng-click="vm.addTodo()"><i class={{vm.btn.icon}}></i> {{vm.btn.name}}</button>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
