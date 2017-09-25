@@ -54,11 +54,6 @@ gulp.task('clean', function (cb) {
 gulp.task('build-js', ['clean'], function () {
   return gulp.src(filePath)
     .pipe(concat('app.js'))
-    .pipe(buffer())
-    .pipe(cachebust.resources())
-    .pipe(sourcemaps.init({ loadMaps: true }))
-    .on('error', gutil.log)
-    .pipe(sourcemaps.write('./'))
     .pipe(gulp.dest('./gulp/js/'));
 });
 
