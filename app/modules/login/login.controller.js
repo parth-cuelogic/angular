@@ -1,4 +1,16 @@
-app.controller('loginController',
+angular.module('login.module', [])
+    .config(['$stateProvider', function ($stateProvider) {
+        $stateProvider
+            .state({
+                name: 'login',
+                url: '/login',
+                views: {
+                    'main': { templateUrl: './modules/login/login.html' }
+                }
+            })
+    }])
+
+    .controller('loginController',
     ['$scope', 'DataService', '$state', 'AuthService', 'toaster',
         function ($scope, DataService, $state, AuthService, toaster) {
             var vm = this;

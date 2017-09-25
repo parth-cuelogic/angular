@@ -1,5 +1,19 @@
-
-app.controller('homeController',
+angular.module('home.module', [
+    'profile.module',
+    'todo.module',
+])
+    .config(['$stateProvider', function ($stateProvider) {
+        $stateProvider
+            .state({
+                name: 'app.home',
+                url: 'home',
+                templateUrl: './modules/home/home.html',
+                params: {
+                    user: undefined
+                }
+            });
+    }])
+    .controller('homeController',
     ['$scope', '$stateParams', '$state', 'AuthService', 'DataService', 'TodoService', 'toaster', '$uibModal',
         function ($scope, $stateParams, $state, AuthService, DataService, TodoService, toaster, $uibModal) {
             var vm = this;
@@ -70,6 +84,7 @@ app.controller('homeController',
                     $scope.order[keyVal] = !$scope.order[keyVal]
                 }
                 $scope.order['key'] = keyVal;
+                console.log($scope.order);
             };
 
             vm.clearFilters = function () {
@@ -77,7 +92,7 @@ app.controller('homeController',
                     value: '',
                     key: 'name'
                 }
-                vm.todos = TodoService.getUserTodos(newValue.todo);
+                vm.todos = TodoService.getUserTodos(vm.logedInUser.todo);
             }
 
 

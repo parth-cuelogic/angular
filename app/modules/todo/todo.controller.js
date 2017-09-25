@@ -1,4 +1,13 @@
-app.controller('todoController',
+angular.module('todo.module', [])
+    .config(['$stateProvider', function ($stateProvider) {
+        $stateProvider
+            .state({
+                name: 'app.todo',
+                url: 'todo/{id}',
+                templateUrl: './modules/todo/todo.html',
+            });
+    }])
+    .controller('todoController',
     ['$scope', 'DataService', '$state', 'AuthService', 'TodoService', '$stateParams', 'toaster', 'base64',
         function ($scope, DataService, $state, AuthService, TodoService, $stateParams, toaster, base64) {
             var vm = this;

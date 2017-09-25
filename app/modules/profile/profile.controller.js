@@ -1,6 +1,14 @@
 "use strict";
-
-app.controller('profileController',
+angular.module('profile.module', [])
+    .config(['$stateProvider', function ($stateProvider) {
+        $stateProvider.
+            state({
+                name: 'app.profile',
+                url: 'profile',
+                templateUrl: './modules/profile/profile.html'
+            });
+    }])
+    .controller('profileController',
     ['$scope', 'AuthService', 'DataService', '$state', 'base64', 'toaster',
         function ($scope, AuthService, DataService, $state, base64, toaster) {
             var vm = this;
