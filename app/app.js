@@ -7,18 +7,10 @@ app.controller('mainController',
             vm.user = undefined;
             $scope.$watch('vm.authService.getUser()', function (newValue) {
                 vm.user = newValue;
-            })
+            });
 
             vm.logout = function () {
                 AuthService.setUser(undefined);
                 $state.go('login');
-            }
-
-            // $rootScope.$on('$stateChangeStart',
-            //     function (event, toState, toParams, fromState, fromParams) {
-            //         if (toState.name !== 'login' && toState.name !== 'register' && !AuthService.getUser()) {
-            //             event.preventDefault();
-            //             $state.go('login');
-            //         }
-            //     });
+            };
         }]);

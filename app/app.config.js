@@ -26,6 +26,16 @@ app.config(['$locationProvider', '$routeProvider', '$controllerProvider', '$stat
         });
 }]);
 
-app.run(['DataService', function (DataService) {
+app.run(['DataService','$rootScope', function (DataService,$rootScope) {
+    //create default user for login
     DataService.createDefaultUsers();
+
+    //handles permission for restricted routes
+    $rootScope.$on('$stateChangeStart',
+        function (event, toState, toParams, fromState, fromParams) {
+            if (toState.name !== 'login' && toState.name !== 'register' && !AuthService.getUser()) {
+                event.preventDefault();
+                $state.go('login');
+            }
+        });
 }]);
