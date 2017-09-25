@@ -1,4 +1,5 @@
-app.controller('mainController',
+angular.module('angulardemo')
+    .controller('mainController',
     ['$scope', 'AuthService', '$state', '$rootScope',
         function ($scope, AuthService, $state, $rootScope) {
             var vm = this;

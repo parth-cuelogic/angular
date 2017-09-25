@@ -1,4 +1,4 @@
-app.directive('formattedDate', function (dateFilter) {
+angular.module('angulardemo').directive('formattedDate', function (dateFilter) {
     return {
         require: 'ngModel',
         scope: {

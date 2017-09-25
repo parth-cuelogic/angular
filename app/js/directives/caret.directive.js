@@ -1,4 +1,4 @@
-app.directive('caret', function ($compile) {
+angular.module('angulardemo').directive('caret', function ($compile) {
     // var getElement = function (key) {
     //     return `<span ng-if="order['key']==keyname">
     //         <i ng-if="order[keyname]" class="fa fa-caret-down"></i>

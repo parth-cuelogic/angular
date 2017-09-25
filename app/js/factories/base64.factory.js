@@ -1,4 +1,4 @@
-app.factory('base64', function ($q) {
+angular.module('angulardemo').factory('base64', function ($q) {
     var base64 = {};
     base64.encode = function (file) {
         var fileDefer = $q.defer();

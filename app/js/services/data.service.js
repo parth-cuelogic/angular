@@ -19,7 +19,7 @@ var User = (function () {
 
 })();
 
-app.service('DataService', ['AuthService', function (AuthService) {
+angular.module('angulardemo').service('DataService', ['AuthService', function (AuthService) {
     this.users = [];
 
     this.createDefaultUsers = function () {

@@ -1,4 +1,4 @@
-app.directive('listTodo', function () {
+angular.module('angulardemo').directive('listTodo', function () {
     return {
         restrict: 'EA',
         template: `<tr>

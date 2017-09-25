@@ -14,7 +14,7 @@ var Todo = (function () {
     }
 })();
 
-app.service('TodoService', ['DataService', function (DataService) {
+angular.module('angulardemo').service('TodoService', ['DataService', function (DataService) {
     var Todos = [];
 
     this.insertTodo = function (todo, userId) {

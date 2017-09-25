@@ -1,4 +1,4 @@
-app.directive('noInput', function () {
+angular.module('angulardemo').directive('noInput', function () {
     return {
         restrict: 'A',
         link: function (scope, elem, attrs, ctrl) {

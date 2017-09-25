@@ -1,4 +1,4 @@
-app.directive('deletePermission', function () {
+angular.module('angulardemo').directive('deletePermission', function () {
     return {
         restrict: 'A',
         link: function (scope, elem, attrs, ctrl) {

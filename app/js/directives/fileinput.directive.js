@@ -1,4 +1,4 @@
-app.directive("fileInput", function () {
+angular.module('angulardemo').directive("fileInput", function () {
     return {
         require: "ngModel",
         link: function postLink(scope, elem, attrs, ngModel) {

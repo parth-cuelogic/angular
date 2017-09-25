@@ -1,4 +1,4 @@
-app.directive('fileUpload', () => {
+angular.module('angulardemo').directive('fileUpload', () => {
     return {
         restrict: 'E',
         template: `<input type="file" id='fileUpload' file-Input style="visibility:hidden" ng-model="file" ng-change="fileUpload()">`,

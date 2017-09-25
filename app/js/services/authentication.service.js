@@ -1,4 +1,4 @@
-app.service('AuthService', function() {
+angular.module('angulardemo').service('AuthService', function() {
     this.user = undefined;
     
     this.setUser= function(user){
